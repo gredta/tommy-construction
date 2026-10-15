@@ -1,6 +1,6 @@
 {
-  "name": "Starter Kit",
-  "short_name": "Starter Kit",
+  "name": "Tommy Construction",
+  "short_name": "Tommy Construction",
   "icons": [
     {
       "src": "/assets/favicons/web-app-manifest-192x192.png",
@@ -15,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
+  "theme_color": "#f4a42d",
   "background_color": "#ffffff",
   "display": "standalone"
 }
