@@ -12,12 +12,20 @@
         <meta name="generator" content="{{ eleventy.generator }}">
 
         <!--Social Media Display-->
+        <meta property="og:site_name" content="{{ client.name }}"/>
         <meta property="og:title" content="{{ title }}"/>
         <meta property="og:description" content="{{ description }}"/>
         <meta property="og:type" content="website"/>
         <meta property="og:url" content="{{ client.domain }}{{ page.url }}"/>
-        <meta property="og:image" content="{{ image or "/assets/images/TCounters/tCounters%20LOGO.png" }}"/>
-        <meta property="og:image:secure_url" content="{{ image or "/assets/images/TCounters/tCounters%20LOGO.png" }}"/>
+        <meta property="og:image" content="{{ image or "/assets/images/TCounters/IMG_0715.JPG" }}"/>
+        <meta property="og:image:secure_url" content="{{ image or "/assets/images/TCounters/IMG_0715.JPG" }}"/>
+        <meta property="og:image:alt" content="{{ title }}"/>
+
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:title" content="{{ title }}"/>
+        <meta name="twitter:description" content="{{ description }}"/>
+        <meta name="twitter:image" content="{{ image or "/assets/images/TCounters/IMG_0715.JPG" }}"/>
+        <meta name="twitter:image:alt" content="{{ title }}"/>
 
         <!--Favicons-->
         <!-- https://realfavicongenerator.net/ -->

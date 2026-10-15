@@ -52,6 +52,20 @@
                             Reviews
                         </a>
                     </li>
+                    <li class="cs-li cs-dropdown">
+                        <button class="cs-li-link cs-dropdown-toggle {% if page.url == "/stones-we-carry/" or page.url == "/picking-the-perfect-profile/" %} cs-active {% endif %}" aria-haspopup="menu" aria-expanded="false" id="blog-dropdown-toggle">
+                            Blog
+                            <img class="cs-drop-icon" src="/assets/svgs/dropdown.svg" alt="" width="15" height="15" decoding="async" aria-hidden="true">
+                        </button>
+                        <ul class="cs-drop-ul" aria-labelledby="blog-dropdown-toggle">
+                            <li class="cs-drop-li">
+                                <a href="/stones-we-carry/" class="cs-li-link cs-drop-link">Picking the Perfect Counter Stone</a>
+                            </li>
+                            <li class="cs-drop-li">
+                                <a href="/picking-the-perfect-profile/" class="cs-li-link cs-drop-link">Picking the Perfect Profile</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="cs-li cs-hide-on-desktop">
                         <a href="/contact/" class="cs-li-link {% if page.url == "/contact/" %} cs-active {% endif %}" {% if page.url == "/contact/" %} aria-current="page" {% endif %}>
                             Contact
