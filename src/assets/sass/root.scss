@@ -351,10 +351,13 @@
 		padding: 0;
 		background: transparent;
 		border: none;
-		display: block;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		position: absolute;
-		top: calc(10 / 16 * 1rem);
-		right: calc(70 / 16 * 1rem);
+		top: 50%;
+		right: calc(68 / 16 * 1rem);
+		transform: translateY(-50%);
 		z-index: 1000;
 		overflow: hidden;
 
@@ -362,7 +365,6 @@
 		svg {
 			width: calc(20 / 16 * 1rem);
 			height: calc(20 / 16 * 1rem);
-			//center image inside button
 			position: absolute;
 			top: 50%;
 			left: 50%;
@@ -407,9 +409,18 @@
 <---     Mobile Navigation      -->
 <--- -------------------------- -*/
 
+@media only screen and (max-width: 767px) {
+	#materials-143 .materials-card-group,
+	#edge-profiles-143 .edge-profiles-card-group {
+		grid-template-columns: 1fr !important;
+	}
+}
+
 /* Mobile - 1023.5px */
 @media only screen and (max-width: 1023.5px) {
 	body {
+		padding-top: clamp(4rem, 12vw, 5rem);
+
 		&.cs-open {
 			overflow: hidden;
 		}
@@ -419,10 +430,12 @@
 		width: 100%;
 		/* prevents padding and border from affecting height and width */
 		box-sizing: border-box;
-		padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
+		padding: calc(8 / 16 * 1rem) calc(16 / 16 * 1rem);
 		background-color: #fff;
 		box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 		position: fixed;
+		top: 0;
+		left: 0;
 		z-index: 10000;
 
 		&:before {
@@ -465,6 +478,7 @@
 			display: flex;
 			justify-content: flex-end;
 			align-items: center;
+			height: clamp(3rem, 8vw, 3.5rem);
 		}
 
 		.cs-logo {
