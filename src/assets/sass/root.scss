@@ -421,6 +421,13 @@
 	#article-guides-143 ul {
 		grid-template-columns: 1fr !important;
 	}
+
+	.stone-guide-grid,
+	.stone-guide-tips-grid,
+	.profile-guide-grid,
+	.profile-guide-tips-grid {
+		grid-template-columns: 1fr !important;
+	}
 }
 
 /* Mobile - 1023.5px */
@@ -933,13 +940,13 @@
 				box-sizing: border-box;
 				padding: calc(12 / 16 * 1rem);
 				color: var(--bodyTextColor);
-				background-color: #f7f7f7;
+				background-color: transparent;
 				outline: none;
 				display: block;
 				transition: color 0.3s, background-color 0.3s;
 
 				&:hover {
-					background-color: #f0f0f0;
+					background-color: transparent;
 				}
 
 				&:focus-visible {
@@ -965,10 +972,10 @@
 
 			.cs-li-link {
 				&.cs-drop-link {
-					background-color: var(--medium);
+					background-color: transparent;
 
 					&:hover {
-						background-color: var(--light);
+						background-color: transparent;
 					}
 				}
 			}
@@ -1369,7 +1376,7 @@
 		.cs-social-link {
 			width: calc(24 / 16 * 1rem);
 			height: calc(24 / 16 * 1rem);
-			background-color: #4e4b66;
+			background-color: #d2b48c;
 			border-radius: 50%;
 			display: flex;
 			justify-content: center;
@@ -1379,7 +1386,7 @@
 			transition: transform 0.3s, background-color 0.3s;
 
 			&:hover {
-				background-color: #1a1a1a;
+				background-color: #b98f5d;
 				transform: translateY(-0.1875rem);
 			}
 		}
