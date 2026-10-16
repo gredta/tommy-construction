@@ -410,8 +410,15 @@
 <--- -------------------------- -*/
 
 @media only screen and (max-width: 767px) {
-	#materials-143 .materials-card-group,
+	#materials-143 .materials-card-group {
+		grid-template-columns: 1fr !important;
+	}
+
 	#edge-profiles-143 .edge-profiles-card-group {
+		grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+	}
+
+	#article-guides-143 ul {
 		grid-template-columns: 1fr !important;
 	}
 }
