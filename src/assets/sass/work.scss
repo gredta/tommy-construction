@@ -1,0 +1,439 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// PAGE STYLES
+// Our Work page: before/after sliders, filterable gallery, and lightbox
+// ─────────────────────────────────────────────────────────────────────────────
+
+/*-- -------------------------- -->
+<---       Shared Sections      -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    .cs-work-section {
+        padding: var(--sectionPadding);
+        /* anchor links shouldn't land under the fixed nav */
+        scroll-margin-top: calc(80 / 16 * 1rem);
+
+        .cs-container {
+            width: 100%;
+            max-width: calc(1280 / 16 * 1rem);
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 32px - 48px */
+            gap: clamp(2rem, 5vw, 3rem);
+        }
+
+        .cs-content {
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .cs-work-gallery {
+        background-color: #f8f5f1;
+    }
+}
+
+/*-- -------------------------- -->
+<---       Before & After       -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #before-after {
+        .cs-ba-group {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            /* 32px - 48px */
+            gap: clamp(2rem, 4vw, 3rem) clamp(1rem, 3vw, 2rem);
+        }
+
+        .cs-ba-frame {
+            --position: 50%;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            border-radius: calc(8 / 16 * 1rem);
+            overflow: hidden;
+            position: relative;
+            cursor: ew-resize;
+            user-select: none;
+            /* horizontal drags move the slider, vertical swipes still scroll the page */
+            touch-action: pan-y;
+        }
+
+        .cs-ba-picture {
+            position: absolute;
+            inset: 0;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                pointer-events: none;
+            }
+        }
+
+        .cs-ba-after {
+            clip-path: inset(0 0 0 var(--position));
+        }
+
+        .cs-ba-label {
+            font-size: calc(12 / 16 * 1rem);
+            line-height: 1;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #fff;
+            padding: calc(6 / 16 * 1rem) calc(10 / 16 * 1rem);
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: calc(4 / 16 * 1rem);
+            position: absolute;
+            top: calc(12 / 16 * 1rem);
+            pointer-events: none;
+        }
+
+        .cs-ba-label-before {
+            left: calc(12 / 16 * 1rem);
+        }
+
+        .cs-ba-label-after {
+            right: calc(12 / 16 * 1rem);
+        }
+
+        .cs-ba-handle {
+            width: calc(3 / 16 * 1rem);
+            background-color: #fff;
+            box-shadow: 0 0 calc(8 / 16 * 1rem) rgba(0, 0, 0, 0.4);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: var(--position);
+            transform: translateX(-50%);
+            pointer-events: none;
+
+            /* round grip with left/right arrows */
+            &:after {
+                content: "\2039\00a0\203A";
+                font-size: calc(22 / 16 * 1rem);
+                font-weight: 700;
+                line-height: 1;
+                color: var(--primary);
+                width: calc(44 / 16 * 1rem);
+                height: calc(44 / 16 * 1rem);
+                background-color: #fff;
+                border-radius: 50%;
+                box-shadow: 0 calc(2 / 16 * 1rem) calc(10 / 16 * 1rem) rgba(0, 0, 0, 0.35);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        /* the range input is only there for keyboard and screen reader users */
+        .cs-ba-range {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            opacity: 0;
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .cs-ba-frame:has(.cs-ba-range:focus-visible) .cs-ba-handle:after {
+            outline: calc(3 / 16 * 1rem) solid var(--primary);
+            outline-offset: calc(3 / 16 * 1rem);
+        }
+
+        .cs-ba-title {
+            font-size: calc(20 / 16 * 1rem);
+            line-height: 1.2em;
+            font-weight: 700;
+            color: var(--headerColor);
+            margin: calc(16 / 16 * 1rem) 0 0;
+        }
+
+        .cs-ba-desc {
+            font-size: var(--bodyFontSize);
+            line-height: 1.5em;
+            color: var(--bodyTextColor);
+            margin: calc(4 / 16 * 1rem) 0 0;
+        }
+    }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    #before-after {
+        .cs-ba-group {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+}
+
+/*-- -------------------------- -->
+<---          Gallery           -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    #gallery {
+        .cs-filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: calc(8 / 16 * 1rem);
+        }
+
+        .cs-filter {
+            font-family: inherit;
+            font-size: calc(14 / 16 * 1rem);
+            line-height: 1;
+            font-weight: 700;
+            color: var(--primary);
+            padding: calc(10 / 16 * 1rem) calc(18 / 16 * 1rem);
+            background-color: #fff;
+            border: 1px solid var(--primary);
+            border-radius: calc(999 / 16 * 1rem);
+            cursor: pointer;
+            transition:
+                background-color 0.3s,
+                color 0.3s;
+
+            &:hover,
+            &[aria-pressed="true"] {
+                color: #fff;
+                background-color: var(--primary);
+            }
+        }
+
+        .cs-gallery-group {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr;
+            /* 24px - 32px */
+            gap: clamp(1.5rem, 3vw, 2rem) clamp(1rem, 2vw, 1.5rem);
+        }
+
+        .cs-gallery-item[hidden] {
+            display: none;
+        }
+
+        .cs-gallery-link {
+            aspect-ratio: 4 / 3;
+            border-radius: calc(8 / 16 * 1rem);
+            overflow: hidden;
+            display: block;
+            position: relative;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                transition: transform 0.6s;
+            }
+
+            &:hover img {
+                transform: scale(1.04);
+            }
+
+            &:focus-visible {
+                outline: calc(3 / 16 * 1rem) solid var(--primary);
+                outline-offset: calc(3 / 16 * 1rem);
+            }
+
+            /* a job's extra photos are hidden links the lightbox steps through;
+               without this, display: block above would show them as empty boxes */
+            &[hidden] {
+                display: none;
+            }
+        }
+
+        .cs-count {
+            font-size: calc(13 / 16 * 1rem);
+            line-height: 1;
+            font-weight: 700;
+            color: #fff;
+            padding: calc(6 / 16 * 1rem) calc(10 / 16 * 1rem);
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: calc(4 / 16 * 1rem);
+            position: absolute;
+            right: calc(12 / 16 * 1rem);
+            bottom: calc(12 / 16 * 1rem);
+        }
+
+        .cs-gallery-title {
+            font-size: calc(18 / 16 * 1rem);
+            line-height: 1.2em;
+            font-weight: 700;
+            color: var(--headerColor);
+            margin: calc(12 / 16 * 1rem) 0 0;
+        }
+
+        .cs-gallery-desc {
+            font-size: calc(15 / 16 * 1rem);
+            line-height: 1.5em;
+            color: var(--bodyTextColor);
+            margin: calc(4 / 16 * 1rem) 0 0;
+        }
+    }
+}
+
+/* Small Tablet - 600px */
+@media only screen and (min-width: 37.5rem) {
+    #gallery {
+        .cs-gallery-group {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+}
+
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    #gallery {
+        .cs-gallery-group {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+}
+
+/*-- -------------------------- -->
+<---          Lightbox          -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    .cs-lightbox {
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        max-height: 100%;
+        margin: 0;
+        padding: calc(56 / 16 * 1rem) calc(12 / 16 * 1rem);
+        background: transparent;
+        border: none;
+
+        &[open] {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &::backdrop {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+    }
+
+    .cs-lightbox-figure {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: calc(12 / 16 * 1rem);
+    }
+
+    .cs-lightbox-img {
+        max-width: 100%;
+        max-height: calc(100vh - 9rem);
+        border-radius: calc(4 / 16 * 1rem);
+        display: block;
+    }
+
+    .cs-lightbox-caption {
+        font-size: calc(15 / 16 * 1rem);
+        color: #fff;
+        text-align: center;
+    }
+
+    .cs-lightbox-close,
+    .cs-lightbox-nav {
+        font-family: inherit;
+        line-height: 1;
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.15);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: var(--primary);
+        }
+
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    .cs-lightbox-close {
+        font-size: calc(32 / 16 * 1rem);
+        width: calc(44 / 16 * 1rem);
+        height: calc(44 / 16 * 1rem);
+        top: calc(8 / 16 * 1rem);
+        right: calc(8 / 16 * 1rem);
+    }
+
+    .cs-lightbox-nav {
+        font-size: calc(40 / 16 * 1rem);
+        width: calc(48 / 16 * 1rem);
+        height: calc(48 / 16 * 1rem);
+        padding-bottom: calc(4 / 16 * 1rem);
+        bottom: calc(8 / 16 * 1rem);
+    }
+
+    .cs-lightbox-prev {
+        left: calc(50% - 3.5rem);
+    }
+
+    .cs-lightbox-next {
+        right: calc(50% - 3.5rem);
+    }
+}
+
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    .cs-lightbox {
+        padding: calc(48 / 16 * 1rem) calc(96 / 16 * 1rem);
+    }
+
+    .cs-lightbox-img {
+        max-height: calc(100vh - 7rem);
+    }
+
+    /* arrows move to the sides of the photo on larger screens */
+    .cs-lightbox-nav {
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
+    }
+
+    .cs-lightbox-prev {
+        left: calc(24 / 16 * 1rem);
+    }
+
+    .cs-lightbox-next {
+        right: calc(24 / 16 * 1rem);
+    }
+}

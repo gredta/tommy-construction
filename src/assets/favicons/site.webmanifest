@@ -3,13 +3,13 @@
   "short_name": "Tommy Construction",
   "icons": [
     {
-      "src": "/assets/images/TCounters/tCounters%20LOGO.png",
+      "src": "/assets/images/brand/tcounters-logo.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/assets/images/TCounters/tCounters%20LOGO.png",
+      "src": "/assets/images/brand/tcounters-logo.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

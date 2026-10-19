@@ -1,0 +1,127 @@
+---
+title: "Our Work | Tommy Construction | Baltimore, MD"
+description: "Before and after photos of granite, marble, and quartz countertops installed by Tommy Construction in kitchens, bathrooms, and businesses around Baltimore."
+permalink: "/our-work/"
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/work.css">
+    <script defer src="/assets/js/work.js"></script>
+{% endblock %}
+
+{# A responsive 4:3 photo. Jobs are rendered in loops, so the image path comes from src/_data/work.js #}
+{% macro workPicture(src, alt, className = "", loading = "lazy") %}
+    <picture class="{{ className }}">
+        <source media="(max-width: 600px)" srcset="{% getUrl src | resize({ width: 640, height: 480 }) | avif %}" type="image/avif">
+        <source media="(max-width: 600px)" srcset="{% getUrl src | resize({ width: 640, height: 480 }) | webp %}" type="image/webp">
+        <source media="(min-width: 601px)" srcset="{% getUrl src | resize({ width: 960, height: 720 }) | avif %}" type="image/avif">
+        <source media="(min-width: 601px)" srcset="{% getUrl src | resize({ width: 960, height: 720 }) | webp %}" type="image/webp">
+        <img src="{% getUrl src | resize({ width: 960, height: 720 }) | jpeg %}" alt="{{ alt }}" width="960" height="720" loading="{{ loading }}" decoding="async">
+    </picture>
+{% endmacro %}
+
+{% block body %}
+
+    <div id="banner-310">
+        <div class="cs-container">
+            <h1 class="cs-int-title">Our Work</h1>
+            <div class="cs-breadcrumbs">
+                <a href="/" class="cs-link">Home</a>
+                <a href="/our-work/" class="cs-link cs-active">Our Work</a>
+            </div>
+        </div>
+        <picture class="cs-background">
+            <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/work/kitchen-20.jpg" | resize({ width: 640, height: 600 }) | avif %}" type="image/avif">
+            <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/work/kitchen-20.jpg" | resize({ width: 640, height: 600 }) | webp %}" type="image/webp">
+            <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/work/kitchen-20.jpg" | resize({ width: 640, height: 600 }) | jpeg %}" type="image/jpeg">
+            <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/work/kitchen-20.jpg" | resize({ width: 2048, height: 942 }) | avif %}" type="image/avif">
+            <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/work/kitchen-20.jpg" | resize({ width: 2048, height: 942 }) | webp %}" type="image/webp">
+            <source media="(max-width: 1024px)" srcset="{% getUrl "/assets/images/work/kitchen-20.jpg" | resize({ width: 2048, height: 942 }) | jpeg %}" type="image/jpeg">
+            <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/work/kitchen-20.jpg" | resize({ width: 2400, height: 603 }) | avif %}" type="image/avif">
+            <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/work/kitchen-20.jpg" | resize({ width: 2400, height: 603 }) | webp %}" type="image/webp">
+            <source media="(min-width: 1024px)" srcset="{% getUrl "/assets/images/work/kitchen-20.jpg" | resize({ width: 2400, height: 603 }) | jpeg %}" type="image/jpeg">
+            <img src="{% getUrl "/assets/images/work/kitchen-20.jpg" | resize({ width: 2400, height: 603 }) | jpeg %}" alt="Waterfall island in a newly finished kitchen" width="1920" height="482" loading="eager" decoding="async">
+        </picture>
+    </div>
+
+    <!-- ============================================ -->
+    <!--               Before & After                 -->
+    <!-- ============================================ -->
+
+    <section id="before-after" class="cs-work-section">
+        <div class="cs-container">
+            <div class="cs-content">
+                <span class="cs-topper">Before &amp; After</span>
+                <h2 class="cs-title">See the Difference New Countertops Make</h2>
+                <p class="cs-text">Drag the slider across any photo to compare the space before and after our install.</p>
+            </div>
+            <ul class="cs-ba-group">
+                {% for job in work.beforeAfter %}
+                    <li class="cs-ba-item">
+                        <div class="cs-ba-frame">
+                            {{ workPicture(job.before, job.title + " before the new countertops", "cs-ba-picture cs-ba-before", "eager" if loop.index <= 2 else "lazy") }}
+                            {{ workPicture(job.after, job.title + " after the new countertops were installed", "cs-ba-picture cs-ba-after", "eager" if loop.index <= 2 else "lazy") }}
+                            <span class="cs-ba-label cs-ba-label-before" aria-hidden="true">Before</span>
+                            <span class="cs-ba-label cs-ba-label-after" aria-hidden="true">After</span>
+                            <span class="cs-ba-handle" aria-hidden="true"></span>
+                            <input class="cs-ba-range" type="range" min="0" max="100" value="50" aria-label="{{ job.title }}: slide to compare before and after">
+                        </div>
+                        <h3 class="cs-ba-title">{{ job.title }}</h3>
+                        {% if job.description %}<p class="cs-ba-desc">{{ job.description }}</p>{% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                   Gallery                    -->
+    <!-- ============================================ -->
+
+    <section id="gallery" class="cs-work-section cs-work-gallery">
+        <div class="cs-container">
+            <div class="cs-content">
+                <span class="cs-topper">Gallery</span>
+                <h2 class="cs-title">More Finished Projects</h2>
+                <p class="cs-text">Kitchens, vanities, bars, and commercial counters we've fabricated and installed. Tap a photo to see it larger.</p>
+            </div>
+            <div class="cs-filters" role="group" aria-label="Filter projects">
+                <button class="cs-filter" type="button" data-filter="all" aria-pressed="true">All</button>
+                {% for category in work.categories %}
+                    <button class="cs-filter" type="button" data-filter="{{ category.id }}" aria-pressed="false">{{ category.label }}</button>
+                {% endfor %}
+            </div>
+            <ul class="cs-gallery-group">
+                {% for job in work.gallery %}
+                    <li class="cs-gallery-item" data-category="{{ job.category }}">
+                        {% for photo in job.photos %}
+                            <a class="cs-gallery-link" href="{% getUrl photo | resize({ width: 1800, height: 1800, fit: "inside", withoutEnlargement: true }) | webp %}" data-gallery="{{ job.id }}" data-caption="{{ job.title }}" {% if not loop.first %}hidden{% endif %} aria-label="View {{ job.title | lower }} photo{% if job.photos.length > 1 %} 1 of {{ job.photos.length }}{% endif %}">
+                                {% if loop.first %}
+                                    {{ workPicture(photo, job.title) }}
+                                    {% if job.photos.length > 1 %}<span class="cs-count">{{ job.photos.length }} photos</span>{% endif %}
+                                {% endif %}
+                            </a>
+                        {% endfor %}
+                        <h3 class="cs-gallery-title">{{ job.title }}</h3>
+                        {% if job.description %}<p class="cs-gallery-desc">{{ job.description }}</p>{% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <dialog class="cs-lightbox" id="work-lightbox" aria-label="Project photo viewer">
+        <button class="cs-lightbox-close" type="button" aria-label="Close">&times;</button>
+        <figure class="cs-lightbox-figure">
+            <img class="cs-lightbox-img" src="" alt="">
+            <figcaption class="cs-lightbox-caption"></figcaption>
+        </figure>
+        <button class="cs-lightbox-nav cs-lightbox-prev" type="button" aria-label="Previous photo">&#8249;</button>
+        <button class="cs-lightbox-nav cs-lightbox-next" type="button" aria-label="Next photo">&#8250;</button>
+    </dialog>
+
+    {% include 'sections/cta.html' %}
+
+{% endblock %}
