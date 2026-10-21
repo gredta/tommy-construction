@@ -2,6 +2,8 @@
 
 Website for **T Counters**, a granite, marble, and quartz countertop fabrication and installation company serving Maryland.
 
+View the live site here: https://tommyconstruction.netlify.app/ 
+
 Built with [Eleventy](https://www.11ty.dev/) (Nunjucks templates) and Sass, starting from the [CodeStitch Intermediate Kit](https://github.com/CodeStitchOfficial/Intermediate-Website-Kit-SASS). Set up to deploy on Netlify.
 
 ## Getting started
