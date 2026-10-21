@@ -1,6 +1,6 @@
 ---
-title: "Reviews | Tommy Construction | Baltimore, MD"
-description: "Read what clients say about Tommy Construction and the quality of our granite, marble, and quartz countertop work in Baltimore."
+title: "Reviews | T Counters | Maryland"
+description: "Read what clients say about T Counters and the quality of our granite, marble, and quartz countertop work in Maryland."
 permalink: "/reviews/"
 ---
 
@@ -38,44 +38,15 @@ permalink: "/reviews/"
         <div class="cs-container">
             <div class="cs-content">
                 <span class="cs-topper">Our Reviews</span>
-                <h2 class="cs-title">Clients Recommend the Tommy Difference</h2>
-                <p class="cs-text">We know a quality build is built on trust, attention to detail, and consistent follow-through. The feedback we hear most often is that our work is reliable, honest, and beautifully finished.</p>
+                <h2 class="cs-title">Clients Recommend the T Counters Difference</h2>
+                <p class="cs-text">Fair prices, quick turnarounds, and careful installs. Here is what customers have said about working with T Counters.</p>
             </div>
             <ul class="cs-card-group">
-                <li class="cs-item">
-                    <img class="cs-item-img" aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/profile.svg" alt="profile picture" width="80" height="80">
-                    <p class="cs-item-text">Tommy Construction carefully managed our full-home remodel with incredible attention to detail. They kept us informed, solved issues quickly, and delivered a final result that feels tailored to our family.</p>
-                    <div class="cs-info">
-                        <div class="cs-flex-group">
-                            <span class="cs-name">Emily & James S.</span>
-                            <span class="cs-desc">Homeowners</span>
-                        </div>
-                        <img class="cs-item-stars" aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/stars.svg" alt="stars" width="96" height="16">
-                    </div>
-                </li>
-                <li class="cs-item">
-                    <img class="cs-item-img" aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/profile.svg" alt="profile picture" width="80" height="80">
-                    <p class="cs-item-text">The entire team was responsive, organized, and professional. We hired Tommy Construction for a commercial refresh and the finished space looks polished, functional, and ready for business.</p>
-                    <div class="cs-info">
-                        <div class="cs-flex-group">
-                            <span class="cs-name">Carter W.</span>
-                            <span class="cs-desc">Business Owner</span>
-                        </div>
-                        <img class="cs-item-stars" aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/stars.svg" alt="stars" width="96" height="16">
-                    </div>
-                </li>
-                <li class="cs-item">
-                    <img class="cs-item-img" aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/profile.svg" alt="profile picture" width="80" height="80">
-                    <p class="cs-item-text">Tommy Construction gave our kitchen renovation a clean, modern finish with excellent craftsmanship. The project stayed on schedule and the communication was outstanding throughout.</p>
-                    <div class="cs-info">
-                        <div class="cs-flex-group">
-                            <span class="cs-name">Nina P.</span>
-                            <span class="cs-desc">Homeowner</span>
-                        </div>
-                        <img class="cs-item-stars" aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/stars.svg" alt="stars" width="96" height="16">
-                    </div>
-                </li>
+                {% for review in reviews.items %}
+                    {% include "components/review-card.html" %}
+                {% endfor %}
             </ul>
+            <p class="cs-source">From our <a href="{{ reviews.sourceUrl }}" target="_blank" rel="noopener">{{ reviews.sourceName }} page</a>.</p>
             <a href="/contact/" class="cs-button-solid">Get in Touch</a>
         </div>
     </section>

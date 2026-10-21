@@ -7,21 +7,18 @@
         <!-- Logo Group -->
         <div class="cs-logo-group">
             <a aria-label="go back to home" class="cs-logo" href="/">
-                <img class="cs-logo-img" loading="lazy" decoding="async" src="/assets/images/brand/tcounters-logo.png" alt="Tommy Construction logo" width="240" height="32">
+                <img class="cs-logo-img" loading="lazy" decoding="async" src="/assets/images/brand/tcounters-logo.png" alt="{{ client.name }} logo" width="240" height="32">
             </a>
             <p class="cs-text">
-                Tommy Construction fabricates and installs granite, marble, and quartz countertops for kitchens, baths, islands, and custom interiors across Baltimore.
+                {{ client.name }} fabricates and installs granite, marble, and quartz countertops for kitchens, baths, islands, and custom interiors across {{ client.serviceArea }}.
             </p>
+            <!-- One icon per entry in client.socials; the icon file is src/assets/svgs/<platform>.svg -->
             <div class="cs-social">
-                <a class="cs-social-link" aria-label="visit google profile" href="{{ client.address.mapLink }}" target="_blank" rel="noopener">
-                    <img class="cs-social-img" aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/google.svg" alt="google" width="11" height="11">
-                </a>
-                <a class="cs-social-link" aria-label="visit facebook profile" href="{{ client.socials.facebook }}" target="_blank" rel="noopener">
-                    <img class="cs-social-img" aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/facebook.svg" alt="facebook" width="6" height="11">
-                </a>
-                <a class="cs-social-link" aria-label="visit instagram profile" href="{{ client.socials.instagram }}" target="_blank" rel="noopener">
-                    <img class="cs-social-img" aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/instagram.svg" alt="instagram" width="11" height="11">
-                </a>
+                {% for platform, url in client.socials %}
+                    <a class="cs-social-link" aria-label="visit our {{ platform }} page" href="{{ url }}" target="_blank" rel="noopener">
+                        <img class="cs-social-img" aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/{{ platform }}.svg" alt="" width="11" height="11">
+                    </a>
+                {% endfor %}
             </div>
         </div>
         <!-- Links -->
@@ -64,20 +61,24 @@
             <li class="cs-nav-li">
                 <span class="cs-header">Contact</span>
             </li>
-            <li class="cs-contact-li">
-                <a class="cs-contact-link cs-address" href="{{ client.address.mapLink }}" target="_blank" rel="noopener">
-                    {{ client.address.lineOne }}, <br>
-                    {{ client.address.lineTwo }}, <br>
-                    {{ client.address.city }}, {{ client.address.state }}
-                    {{ client.address.zip }}
-                </a>
-            </li>
+            {% if client.address.lineOne %}
+                <li class="cs-contact-li">
+                    <a class="cs-contact-link cs-address" href="{{ client.address.mapLink }}" target="_blank" rel="noopener">
+                        {{ client.address.lineOne }}, <br>
+                        {% if client.address.lineTwo %}{{ client.address.lineTwo }}, <br>{% endif %}
+                        {{ client.address.city }}, {{ client.address.state }}
+                        {{ client.address.zip }}
+                    </a>
+                </li>
+            {% endif %}
             <li class="cs-contact-li">
                 <a class="cs-contact-link" href="tel:{{ client.phoneForTel }}">{{ client.phoneFormatted }}</a>
             </li>
-            <li class="cs-contact-li">
-                <a class="cs-contact-link" href="mailto:{{ client.email }}">{{ client.email }}</a>
-            </li>
+            {% if client.email %}
+                <li class="cs-contact-li">
+                    <a class="cs-contact-link" href="mailto:{{ client.email }}">{{ client.email }}</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 </footer>

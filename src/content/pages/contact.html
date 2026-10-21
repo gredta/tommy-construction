@@ -1,6 +1,6 @@
 ---
-title: "Contact | Tommy Construction | Baltimore, MD"
-description: "Contact Tommy Construction to request a quote for granite, marble, or quartz countertop fabrication and installation in Baltimore."
+title: "Contact | T Counters | Maryland"
+description: "Contact T Counters to request a quote for granite, marble, or quartz countertop fabrication and installation in Maryland."
 permalink: "/contact/"
 ---
 
@@ -71,17 +71,29 @@ permalink: "/contact/"
                 </form>
             </div>
             <div class="cs-right-section">
-                <span class="cs-header">Email</span>
-                <a class="cs-link" href="mailto:{{ client.email }}">{{ client.email }}</a>
                 <span class="cs-header">Phone</span>
                 <a class="cs-link" href="tel:{{ client.phoneForTel }}">{{ client.phoneFormatted }}</a>
-                <span class="cs-header">Address</span>
-                <a class="cs-link" href="{{ client.address.mapLink }}">
-                    {{ client.address.lineOne }}, <br>
-                    {{ client.address.lineTwo }}, <br>
-                    {{ client.address.city }}, {{ client.address.state }}
-                    {{ client.address.zip }}
-                </a>
+                {% if client.email %}
+                    <span class="cs-header">Email</span>
+                    <a class="cs-link" href="mailto:{{ client.email }}">{{ client.email }}</a>
+                {% endif %}
+                {% if client.address.lineOne %}
+                    <span class="cs-header">Address</span>
+                    <a class="cs-link" href="{{ client.address.mapLink }}">
+                        {{ client.address.lineOne }}, <br>
+                        {% if client.address.lineTwo %}{{ client.address.lineTwo }}, <br>{% endif %}
+                        {{ client.address.city }}, {{ client.address.state }}
+                        {{ client.address.zip }}
+                    </a>
+                {% endif %}
+                {% if client.socials.instagram %}
+                    <span class="cs-header">Instagram</span>
+                    <a class="cs-link" href="{{ client.socials.instagram }}" target="_blank" rel="noopener">@t.counters</a>
+                {% endif %}
+                {% if client.socials.yelp %}
+                    <span class="cs-header">Yelp</span>
+                    <a class="cs-link" href="{{ client.socials.yelp }}" target="_blank" rel="noopener">See our reviews on Yelp</a>
+                {% endif %}
                 <picture class="cs-bg-picture">
                     <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/work/kitchen-2-after.jpg" | resize({ width: 576, height: 640 }) | avif %}" type="image/avif">
                     <source media="(max-width: 600px)" srcset="{% getUrl "/assets/images/work/kitchen-2-after.jpg" | resize({ width: 576, height: 640 }) | webp %}" type="image/webp">

@@ -366,9 +366,9 @@
             background: #fff;
             position: relative;
             display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            align-items: center;
+            /* stacked so the reviewer info sits at the bottom and lines up across cards of different lengths */
+            flex-direction: column;
+            justify-content: flex-start;
             /* Prevents padding from affecting height & width */
             box-sizing: border-box;
 
@@ -386,6 +386,8 @@
 
         .cs-item-text {
             font-size: calc(16 / 16 * 1rem);
+            /* fills the spare height so the divider below it lines up across cards */
+            flex-grow: 1;
             line-height: 1.5em;
             margin: 0 0 calc(20 / 16 * 1rem);
             padding-bottom: calc(20 / 16 * 1rem);

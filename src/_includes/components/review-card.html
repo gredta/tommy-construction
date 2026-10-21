@@ -1,0 +1,11 @@
+<!-- One review card for #reviews-67. Expects `review` from src/_data/reviews.js -->
+<li class="cs-item">
+    <img class="cs-item-img" aria-hidden="true" loading="lazy" decoding="async" src="/assets/svgs/profile.svg" alt="" width="80" height="80">
+    <p class="cs-item-text">{{ review.text }}</p>
+    <div class="cs-info">
+        <div class="cs-flex-group">
+            <span class="cs-name">{{ review.name }}</span>
+            <span class="cs-desc">{{ review.job }} · {{ reviews.sourceName }}, {{ review.date }}</span>
+        </div>
+    </div>
+</li>

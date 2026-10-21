@@ -1,8 +1,8 @@
 {
-	"name": "tommy-construction",
+	"name": "t-counters",
 	"version": "1.0.0",
 	"private": true,
-	"description": "Website for Tommy Construction, a granite, marble, and quartz countertop company in Baltimore. Built on the CodeStitch Intermediate kit (Eleventy + SASS).",
+	"description": "Website for T Counters, a granite, marble, and quartz countertop company in Baltimore. Built on the CodeStitch Intermediate kit (Eleventy + SASS).",
 	"scripts": {
 		"watch:eleventy": "cross-env ELEVENTY_ENV=DEV eleventy --serve",
 		"build:eleventy": "cross-env ELEVENTY_ENV=PROD eleventy",

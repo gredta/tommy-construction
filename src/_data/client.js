@@ -1,20 +1,25 @@
 module.exports = {
-    name: "Tommy Construction",
-    email: "hello@tommyconstruction.com",
-    phoneForTel: "720-555-0149",
-    phoneFormatted: "(720) 555-0149",
+    name: "T Counters",
+    // Where they work, used in page titles and copy. They serve all of Maryland rather than one city.
+    serviceArea: "Maryland",
+    // Leave empty until the company email exists; the site hides email links while this is blank
+    email: "",
+    phoneForTel: "443-812-2207",
+    phoneFormatted: "(443) 812-2207",
+    // Street address lines are hidden while empty. City and state are used in page titles.
     address: {
-        lineOne: "1420 N Charles St",
-        lineTwo: "Suite 200",
-        city: "Baltimore",
+        lineOne: "",
+        lineTwo: "",
+        city: "",
         state: "MD",
-        zip: "21201",
+        zip: "",
         country: "US",
-        mapLink: "https://maps.google.com/?q=1420+N+Charles+St+Baltimore+MD+21201",
+        mapLink: "",
     },
+    // Each entry gets a footer icon (src/assets/svgs/<platform>.svg) and is listed in the structured data
     socials: {
-        facebook: "https://www.facebook.com/",
-        instagram: "https://www.instagram.com/",
+        instagram: "https://www.instagram.com/t.counters/",
+        yelp: "https://www.yelp.com/biz/t-counters-columbia",
     },
     //! Make sure you include the file protocol (e.g. https://) and that NO TRAILING SLASH is included
     domain: "https://www.tommyconstructionco.com",
